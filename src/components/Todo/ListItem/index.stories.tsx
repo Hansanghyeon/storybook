@@ -5,7 +5,7 @@ import CenterWrap from '@atom/wrap/Center';
 import TodoItem from '.';
 
 export default {
-  title: '02. Molcules/list item/Todo',
+  title: 'TODOS/TODO/List Item',
   component: TodoItem,
   decorators: [
     withKnobs,
