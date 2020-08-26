@@ -32,6 +32,7 @@ module.exports = ({ config }) => {
   });
   config.resolve.extensions.push('.ts', '.tsx', '.js', '.jsx');
   config.resolve.alias = {
+    '@': path.resolve(__dirname, '../src/components'),
     '@src': path.resolve(__dirname, '../src/'),
     '@atom': path.resolve(__dirname, '../src/components/atoms'),
     '@molecule': path.resolve(__dirname, '../src/components/molecules'),
