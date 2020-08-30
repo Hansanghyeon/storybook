@@ -1,51 +1,9 @@
-import React, { useState } from 'react';
-// components
-import DragBtn from '@atom/btn/Drag';
-import {
-  ListItem,
-  CompletedBtn,
-  CompletedMask,
-  TextBox,
-  DragControler,
-} from './style';
+import React from 'react';
+// Components
+import TodoItemDef from './Def';
+import TodoItemUndo from './Undo';
 
-type props = {
-  content?: string;
-  isDone?: boolean;
-};
-const TodoItem: React.FC<props> = ({ content, isDone }: props) => {
-  const [value, setValue] = useState(content);
-  const [done, setDone] = useState<boolean>(isDone || false);
-
-  const handleValue = ({ target }: { target: HTMLInputElement }) =>
-    setValue(target.value);
-
-  const handleDone = ({ target }: { target: HTMLInputElement }) => {
-    setDone(target.checked);
-  };
-
-  return (
-    <ListItem animate={done ? 'open' : 'closed'}>
-      <DragControler>
-        <DragBtn />
-      </DragControler>
-      <TextBox
-        type="text"
-        value={value}
-        onChange={handleValue}
-        placeholder="New TODOs"
-      />
-      <CompletedMask.Component
-        checked={done}
-        variants={CompletedMask.variants}
-      />
-      <CompletedBtn type="checkbox" onChange={handleDone} />
-    </ListItem>
-  );
-};
-TodoItem.defaultProps = {
-  content: '',
-  isDone: false,
-};
+const TodoItem = () => <TodoItemDef />;
+TodoItem.Undo = () => <TodoItemUndo />;
 
 export default TodoItem;

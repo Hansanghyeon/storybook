@@ -16,3 +16,4 @@ export default {
 };
 
 export const standard = () => <TodoItem />;
+export const undo = () => <TodoItem.Undo />;
