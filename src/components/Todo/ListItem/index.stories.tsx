@@ -1,5 +1,6 @@
 import React from 'react';
-import { withKnobs } from '@storybook/addon-knobs';
+import { withKnobs, text } from '@storybook/addon-knobs';
+import faker from 'faker';
 // components
 import CenterWrap from '@atom/wrap/Center';
 import TodoItem from '.';
@@ -16,4 +17,11 @@ export default {
 };
 
 export const standard = () => <TodoItem />;
-export const undo = () => <TodoItem.Undo />;
+export const undo = () => {
+  const data = {
+    category: {
+      color: text('category color', faker.commerce.color()),
+    },
+  };
+  return <TodoItem.Undo data={data} />;
+};

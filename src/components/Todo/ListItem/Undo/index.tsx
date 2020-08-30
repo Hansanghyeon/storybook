@@ -10,11 +10,16 @@ import {
 } from './style';
 
 type props = {
-  content?: string;
+  data: {
+    content?: string;
+    category?: {
+      color: string;
+    };
+  };
   isDone?: boolean;
 };
-const TodoItemUndo: React.FC<props> = ({ content, isDone }: props) => {
-  const [value, setValue] = useState(content);
+const TodoItemUndo: React.FC<props> = ({ data, isDone }: props) => {
+  const [value, setValue] = useState(data?.content);
   const [done, setDone] = useState<boolean>(isDone || false);
 
   const handleValue = ({ target }: { target: HTMLInputElement }) =>
@@ -25,7 +30,7 @@ const TodoItemUndo: React.FC<props> = ({ content, isDone }: props) => {
   };
 
   return (
-    <ListItem animate={done ? 'open' : 'closed'}>
+    <ListItem animate={done ? 'open' : 'closed'} bg={data?.category?.color}>
       <DragControler>
         <DragBtn />
       </DragControler>
@@ -44,7 +49,6 @@ const TodoItemUndo: React.FC<props> = ({ content, isDone }: props) => {
   );
 };
 TodoItemUndo.defaultProps = {
-  content: '',
   isDone: false,
 };
 

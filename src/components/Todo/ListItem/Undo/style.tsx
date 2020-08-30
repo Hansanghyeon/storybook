@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
 
-export const ListItem = styled(motion.div)`
+export const ListItem = styled(motion.div)<{ bg?: string }>`
   padding: 8px 11px;
-  background: #c4c4c4;
+  background: ${({ bg }) => bg || '#c4c4c4'};
   display: flex;
   position: relative;
   border-radius: 9px;
@@ -46,7 +46,7 @@ export const CompletedMask = {
   variants: {
     open: {
       clipPath: 'circle(130% at var(--position-x) var(--position-y))',
-      background: '#FFD601',
+      background: '#000000',
       tranisition: {
         delay: 0.5,
       },
