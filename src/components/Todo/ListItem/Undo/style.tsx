@@ -44,13 +44,26 @@ TextBox.defaultProps = {
 };
 export { TextBox };
 
+export const ButtonBox = styled.div`
+  position: relative;
+`;
+export const UndoLabel = styled.span`
+  font-size: 12px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  z-index: 200;
+  color: #fff;
+`;
 export const CompletedBtn = styled.input`
   width: 30px;
   height: 30px;
   border: none;
   border-radius: 999px;
   margin: 0;
-  z-index: 200;
+  z-index: 201;
+  position: relative;
   overflow: hidden;
   display: block;
   opacity: 0;

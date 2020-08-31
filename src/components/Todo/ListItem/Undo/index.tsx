@@ -7,6 +7,8 @@ import {
   CompletedMask,
   TextBox,
   DragControler,
+  UndoLabel,
+  ButtonBox,
 } from './style';
 
 type props = {
@@ -40,10 +42,17 @@ const TodoItemUndo: React.FC<props> = ({ data, isDone }: props) => {
         value={value === '' ? data?.content : value}
         onChange={handleValue}
         placeholder="New TODOs"
-        bg={data?.category?.color}
       />
       <CompletedMask checked={done} />
-      <CompletedBtn type="checkbox" onChange={handleDone} />
+      <ButtonBox>
+        <CompletedBtn
+          id="test"
+          type="checkbox"
+          onChange={handleDone}
+          name="test"
+        />
+        <UndoLabel>Uudo</UndoLabel>
+      </ButtonBox>
     </ListItem>
   );
 };
