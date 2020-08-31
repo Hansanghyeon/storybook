@@ -2,7 +2,10 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { readableColor } from 'polished';
 
+const isLightnessColor = (color: any) =>
+  readableColor(color) === '#000' ? '#000' : '#fff';
 export const ListItem = styled(motion.div)<{ bg?: string }>`
+  --textColor: ${({ bg }) => isLightnessColor(bg)};
   padding: 8px 11px;
   background: ${({ bg }) => bg || '#c4c4c4'};
   display: flex;
@@ -13,16 +16,13 @@ export const ListItem = styled(motion.div)<{ bg?: string }>`
   margin-bottom: 8px;
 `;
 
-const isLightnessColor = (color: string) =>
-  readableColor(color) === '#000' ? '#000' : '#fff';
-const TextBox = styled(motion.input)<{ bg?: any }>`
-  --textColor: ${({ bg }) => isLightnessColor(bg)};
+const TextBox = styled(motion.input)`
   z-index: 200;
   margin-right: 8px;
   border: none;
   background: transparent;
   &::placeholder {
-    color: ${({ bg }) => isLightnessColor(bg)};
+    color: currentColor;
     opacity: 0.2;
   }
 `;
