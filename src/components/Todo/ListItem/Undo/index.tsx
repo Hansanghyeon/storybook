@@ -13,7 +13,7 @@ type props = {
   data: {
     content?: string;
     category?: {
-      color: string;
+      color: any;
     };
   };
   isDone?: boolean;
@@ -22,8 +22,9 @@ const TodoItemUndo: React.FC<props> = ({ data, isDone }: props) => {
   const [value, setValue] = useState(data?.content);
   const [done, setDone] = useState<boolean>(isDone || false);
 
-  const handleValue = ({ target }: { target: HTMLInputElement }) =>
+  const handleValue = ({ target }: { target: HTMLInputElement }) => {
     setValue(target.value);
+  };
 
   const handleDone = ({ target }: { target: HTMLInputElement }) => {
     setDone(target.checked);
@@ -36,14 +37,12 @@ const TodoItemUndo: React.FC<props> = ({ data, isDone }: props) => {
       </DragControler>
       <TextBox
         type="text"
-        value={value}
+        value={value === '' ? data?.content : value}
         onChange={handleValue}
         placeholder="New TODOs"
+        bg={data?.category?.color}
       />
-      <CompletedMask.Component
-        checked={done}
-        variants={CompletedMask.variants}
-      />
+      <CompletedMask checked={done} />
       <CompletedBtn type="checkbox" onChange={handleDone} />
     </ListItem>
   );
