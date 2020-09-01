@@ -2,6 +2,26 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { readableColor } from 'polished';
 
+export const ListItemRoot = styled(motion.div)`
+  overflow: hidden;
+`;
+ListItemRoot.defaultProps = {
+  variants: {
+    open: {
+      height: '',
+      transition: {
+        duration: 1,
+      },
+    },
+    closed: {
+      height: 0,
+      transition: {
+        delay: 3,
+      },
+    },
+  },
+};
+
 const isLightnessColor = (color: any) =>
   readableColor(color) === '#000' ? '#000' : '#fff';
 export const ListItem = styled(motion.div)<{ bg?: string }>`
@@ -15,6 +35,25 @@ export const ListItem = styled(motion.div)<{ bg?: string }>`
   overflow: hidden;
   margin-bottom: 8px;
 `;
+ListItem.defaultProps = {
+  variants: {
+    open: {
+      transform: 'translateY(0)',
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+      },
+    },
+    closed: {
+      transform: 'translateY(-100%)',
+      opacity: 0,
+      transition: {
+        delay: 2.5,
+        duration: 0.5,
+      },
+    },
+  },
+};
 
 const TextBox = styled(motion.input)`
   z-index: 200;
@@ -29,13 +68,13 @@ const TextBox = styled(motion.input)`
 TextBox.defaultProps = {
   variants: {
     open: {
-      color: '#ffffff',
+      color: 'var(--textColor)',
       transition: {
         delay: 0.5,
       },
     },
     closed: {
-      color: 'var(--textColor)',
+      color: '#ffffff',
       transition: {
         delay: 0.5,
       },
@@ -60,13 +99,13 @@ export const UndoLabel = styled(motion.span)`
 UndoLabel.defaultProps = {
   variants: {
     open: {
-      opacity: 1,
+      opacity: 0,
       transition: {
         delay: 0.5,
       },
     },
     closed: {
-      opacity: 0,
+      opacity: 1,
       transition: {
         delay: 0.5,
       },
@@ -102,15 +141,15 @@ const CompletedMask = styled(motion.div)<{ checked: boolean }>`
 CompletedMask.defaultProps = {
   variants: {
     open: {
-      clipPath: 'circle(130% at var(--position-x) var(--position-y))',
-      background: '#000000',
+      clipPath: 'circle(15px at var(--position-x) var(--position-y))',
+      background: '#ffffff',
       transition: {
         delay: 0.5,
       },
     },
     closed: {
-      clipPath: 'circle(15px at var(--position-x) var(--position-y))',
-      background: '#ffffff',
+      clipPath: 'circle(130% at var(--position-x) var(--position-y))',
+      background: '#000000',
       transition: {
         delay: 0.5,
       },
