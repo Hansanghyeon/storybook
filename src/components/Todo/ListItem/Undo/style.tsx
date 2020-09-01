@@ -47,7 +47,7 @@ export { TextBox };
 export const ButtonBox = styled.div`
   position: relative;
 `;
-export const UndoLabel = styled.span`
+export const UndoLabel = styled(motion.span)`
   font-size: 12px;
   top: 50%;
   left: 50%;
@@ -55,7 +55,25 @@ export const UndoLabel = styled.span`
   transform: translate(-50%, -50%);
   z-index: 200;
   color: #fff;
+  opacity: 0;
 `;
+UndoLabel.defaultProps = {
+  variants: {
+    open: {
+      opacity: 1,
+      transition: {
+        delay: 0.5,
+      },
+    },
+    closed: {
+      opacity: 0,
+      transition: {
+        delay: 0.5,
+      },
+    },
+  },
+};
+
 export const CompletedBtn = styled.input`
   width: 30px;
   height: 30px;
