@@ -1,5 +1,9 @@
 # 🚨 이 폴더의 코드들은 모두 `.storybook` 폴더에서 사용합니다
 
+```
+npx degit https://github.com/Hansanghyeon/storybook .storybook
+```
+
 ## using
 
 디펜던시 설치하기
